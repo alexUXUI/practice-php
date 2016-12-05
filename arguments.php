@@ -1,14 +1,21 @@
 <?php
 
-$test = "testing";
+/**
+ * This is an anon func that
+ * uses a closure through the 'use' keyword
+ * and changes the value of $test
+ * because it is passed by reference '&'
+ */
 
-$closure = function() use(&$test) {
-  echo $test;
-  $test = "This is a new value by reference";
+$value = "testing";
+
+$anonClosureFunc = function () use(&$value)
+{
+    echo $value; // before change
+    $value = "This is a new value by reference";
 };
 
-$closure();
-
-echo $test;
+$anonClosureFunc();
+echo $value; //after change
 
  ?>
